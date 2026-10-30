@@ -1,0 +1,35 @@
+.slide-background{
+  background-size: 122% !important;
+  background-repeat: no-repeat;
+  background-position: 0%  100% ;
+}
+
+aside {
+  position: absolute;
+  bottom: 35px !important;
+  font-size: 0.6em !important;
+}
+
+.reveal .slides section .fragment {
+  margin-bottom: -30px;
+}
+
+
+/*-- Place tables on the left instead in the middle --*/
+table {
+  margin-left: 0;
+  margin-right: auto;
+  float: left;
+}
+
+/*-- Enable using extra space to previous element  --*/
+/*-- can be used in slides with "::: {.extra-space}" --*/
+.extra-space {
+  margin-top: 16px !important;
+}
+
+/*-- Enable decreasing space to previous element  --*/
+/*-- can be used in slides with "::: {.tight-space}" --*/
+.tight-space {
+  margin-top: -8px !important;
+}

@@ -1,0 +1,27 @@
+title: "HTML Präsentation Kanton Aargau"
+author: Adrian Gadient
+version: 0.0.1
+contributes: 
+  formats: 
+    revealjs: 
+    # De-activate scaling for proper rendering of mermaid figures
+    # May also be better in general to avoid problems when working on screens with varying sizes
+      min-scale: 1 
+      max-scale: 1
+      self-contained: true
+      template-partials: 
+        - resources/title-slide.html
+      slide-number: true
+      highlight-style: github
+      theme: [default, _custom.scss]
+      incremental: false
+      css: style.css
+      include-after-body: resources/clean_title_page.html
+      title-slide-attributes: 
+        data-background-image: "./_extensions/presentation-modern/resources/background_modern.png"
+        data-background-size: 100%
+        data-background-position: 0% 0%
+        # data-background-image: "resources/background.png"
+        # data-background-size: 2350px 1300px
+        # data-background-position: -50px -90px
+      

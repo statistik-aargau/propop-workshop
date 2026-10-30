@@ -1,0 +1,141 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: Roboto, Helvetica, Arial, Futura, Palatino
+  FreeSerif, serif !default;
+
+$presentation-font-size-root: 32px;
+
+$presentation-title-slide-text-align: left;
+
+/*-- font of all titles blue --*/
+$presentation-heading-color:   #0471B3;
+$link-color: #fa8128;
+
+/*-- inline code --*/
+$code-color: #fa8128;
+
+/*-- scss:rules --*/
+
+/*-- title slide --*/
+#title-slide {
+  .title {
+    position: relative;
+    margin-top: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 2.7em;
+  }
+  
+  .subtitle{
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  .date{
+    color: white;
+    font-size: 1em;
+  }
+
+  .quarto-title-authors {
+    justify-content: left;
+    
+
+    .quarto-title-affiliation {
+      color: white;
+      font-size: 1em !important;
+      font-weight: bold;
+    }
+
+    .quarto-title-author-name{
+      color: white;
+      font-size: 1em !important;
+    }
+  }
+
+}
+
+
+/* Distance heading to text */
+.reveal .slides h1,
+.reveal .slides h2 {
+    margin-bottom: 40px;
+}
+
+header {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  font-size:18px;
+}
+
+.reveal .slide-number {
+  color: black;
+  font-size: 0.4em !important;
+  bottom: 14px !important;
+  right: 8% !important;
+  top: unset !important;
+  }
+
+.reveal .footer {
+  font-size: 0.4em !important;
+  font-weight: bold;
+  left: 0px !important;
+  margin-left: -28% !important;
+  top: unset !important;
+  color: black !important;
+}
+
+.reveal .slide-logo {
+  display: block;
+  position: fixed;
+  bottom: unset !important;
+  right: unset !important;
+  top: 5px;
+  left: 12px;
+  height: 100px !important;
+  width: 100x !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+
+.theme-split {
+  &:is(.slide-background) {
+    background-image: url('./_extensions/presentation-modern/resources/split.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  
+  
+  h1, h2,  {
+    margin-left: -20px;
+     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    font-size: 3em !important;
+  }
+  
+  p {
+    margin-left: 500px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    font-size: 2em !important;
+    color: #0471B3;
+  }
+  
+  
+}
+
+
+
+/* bullet points */
+.reveal ul li::marker {
+  color:  #0471B3;
+}
