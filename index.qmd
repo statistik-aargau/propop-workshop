@@ -28,16 +28,28 @@ editor_options:
 Participants ...
 
 -   understand how [`propop`](https://statistik-aargau.github.io/propop/) implements the cohort component method.
+-   know the structure and content of required input files.
 -   can run a population projection with [`propop::propop()`](https://github.com/statistik-aargau/propop/blob/main/R/propop.R).
--   *optional: can prepare their own data for [`propop::propop()`](https://github.com/statistik-aargau/propop/blob/main/R/propop.R).*
--   *optional: know how to prepare and run projections for subregions.*
--   *optional: can evaluate, visualize and interpret the results.*
+-   can visualize and interpret the results.
+-   know how to proceed when running projections for subregions.
+
+<!-- Simplified: as "evaluate" may be too ambitious especially if you mean computing metrics -->
+<!-- -   *optional: can evaluate, visualize and interpret the results.* -->
+<!-- I would complete remove the error metrics, just mention it. Main reason is that this requires observed and projected data,  -->
+<!-- which requires a lot of preparation -->
+
+<!-- Too advanced / time consuming -->
+<!-- *optional: know how to prepare and run projections for subregions.* -->
+<!-- -   *optional: can prepare their own data for [`propop::propop()`](https://github.com/statistik-aargau/propop/blob/main/R/propop.R).* -->
 
 \
 
-::: {.fragment}
-[**Other expectations for this course?**]{style="color: #007AB8;"}
-:::
+
+<!-- A higher education didactic teacher once referred to the next questions as "opening padoras box" -->
+<!-- You raise expectations that you cannot meet and will disappoint the attendants -->
+<!-- ::: {.fragment} -->
+<!-- [**Other expectations for this course?**]{style="color: #007AB8;"} -->
+<!-- ::: -->
 
 ## Agenda (~ 3 hours)
 
@@ -46,14 +58,14 @@ Participants ...
 ::: {.column width="15%"}
 \
 \
-9-10.15\
+9–10.15\
 \
 \
 \
 15 min\
 \
 \
-10.30-12\
+10.30–12\
 \
 \
 \
@@ -65,16 +77,26 @@ Participants ...
 
 **Welcome**, aims, setup check\
 **Theory:** cohort component method\
-**Exercise 1:** first projection\
+<!-- **Exercise 1:** first projection\ -->
+<!-- Without further explanation, Exercise 1 seems like jumping ahead.  -->
+<!-- Is the purpose to make the content more engaging? I get that but does the required time justify the goal and to some extent the interruption of the flow? -->
+<!-- Wouldn't it be more coherent to continue directly with the input data? -->
+<!-- Alternative to make it more engangig could be to ask participants to sketch a df with all input they think we need -->
 **Theory:** input data and function arguments\
-**Exercise 2:** explore the input data\
+**Exercise 1:** sketch input files with required columns\
 \
 *Coffee break*\
 \
+
+**Theory:** get input data and run projection\
+**Exercise 2:** run cantonal population projection\
+**Theory:** examine and further process results\
+**Exercise 3:** visualize and interpret the results\
 **Theory:** regionalization and subregions\
-**Theory:** evaluate and compare\
-**Exercise 3:** your own projections\
 **Wrap-up**\
+
+<!-- **Theory:** evaluate and compare\ -->
+
 \
 *Lunch*\
 \
@@ -85,6 +107,8 @@ Participants ...
 ## Setup check
 
 Please check that both lines run without errors:
+
+<!-- Must users load the entire tidyverse? Some hate that and prefer only the required packages -->
 
 ```{r}
 #| echo: true
@@ -187,6 +211,19 @@ Office fédéral de la statistique (2020). [*Méthodes pour les scénarios canto
 
 ## Equation in propop
 
+<!-- Added some lines to remove scrolling bars -->
+
+```{css}
+#| echo: false
+.reveal .grViz {
+  overflow: hidden !important;
+}
+.reveal .grViz svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+```
+
 :::: {.columns}
 ::: {.column width="80%"}
 ```{r}
@@ -224,7 +261,7 @@ digraph flowchart {
   G -> H
   H -> C
 }
-")
+", width = "100%", height = "550px")
 
 graph
 ```
@@ -299,6 +336,9 @@ str(projection_canton_2030)
 
 ## Function arguments
 
+<!-- too much information on this slide at once -->
+<!-- it would be nice to sequentially add and highlight parts of the code -->
+
 :::: {.columns}
 ::: {.column width="45%" style="font-size: 110%;"}
 ```{r}
@@ -337,6 +377,8 @@ population, parameters, projection period\
 :::
 
 ::::
+
+<!-- good idea to incluce the next section, very helpful -->
 
 ::: {style="font-size: 95%;"}
 Learn more\
@@ -495,6 +537,8 @@ Compare the projections for your canton to
 # Wrap-up
 
 ## Package overview: functions at a glance
+
+<!-- a lot of info, present sequentially -->
 
 :::: {.columns}
 
