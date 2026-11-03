@@ -61,6 +61,7 @@ Participants ...
 **Theory:** cohort component method\
 **Theory:** input data and function arguments\
 **Exercise 1:** sketch input files with required columns\
+**Exercise 2:** run a quick example
 \
 *Coffee break*\
 \
@@ -182,6 +183,24 @@ $$
 ::: {.absolute bottom="20px" left="0px" style="font-size: 18px;"}
 Office fédéral de la statistique (2020). [*Méthodes pour les scénarios cantonaux*](https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf)
 :::
+
+## Example calculation: 30-year-old Swiss women
+
+::: {style="font-size: 65%;"}
+| Year | Age | Sex | Nat. | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
+|------|-----|-----|------|-----------------:|------------------:|-------------:|-----------------:|------------:|---------------:|-----------------------:|
+| 2025 | 30 | Female | Swiss | 200 | × 0.09 (−18) | × 0.01 (−2) | = 180 | + 35 | + 4 | = 219 |
+:::
+
+## Example calculation: 30-year-old Swiss women
+
+::: {style="font-size: 65%;"}
+| Year | Age | Sex | Nat. | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
+|------|-----|-----|------|-----------------:|------------------:|-------------:|-----------------:|------------:|---------------:|-----------------------:|
+| 2025 | 30 | Female | Swiss | 200 | × 0.09 (−18) | × 0.01 (−2) | = 180 | + 35 | + 4 | = 219 |
+| 2026 | 31 | Female | Swiss | 219 | × 0.10 (−21.9) | × 0.01 (−2.19) | = 194.91 | + 37 | + 5 | = 236.91 |
+:::
+
 
 ## Equation in propop
 

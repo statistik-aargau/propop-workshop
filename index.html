@@ -2397,7 +2397,7 @@ Norah Efosa &amp; Adrian Gadient
 <strong>Theory:</strong> cohort component method<br>
 <strong>Theory:</strong> input data and function arguments<br>
 <strong>Exercise 1:</strong> sketch input files with required columns<br>
-<br>
+<strong>Exercise 2:</strong> run a quick example<br>
 <em>Coffee break</em><br>
 <br>
 </p>
@@ -2524,6 +2524,119 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 <p>Office fédéral de la statistique (2020). <a href="https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf"><em>Méthodes pour les scénarios cantonaux</em></a></p>
 </div>
 </section>
+<section id="example-calculation-30-year-old-swiss-women" class="slide level2">
+<h2>Example calculation: 30-year-old Swiss women</h2>
+<div style="font-size: 65%;">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Age</th>
+<th>Sex</th>
+<th>Nat.</th>
+<th style="text-align: right;">Start pop.</th>
+<th style="text-align: right;">Emigration (rate)</th>
+<th style="text-align: right;">Mortality (rate)</th>
+<th style="text-align: right;">Remaining cohort</th>
+<th style="text-align: right;">Immigration</th>
+<th style="text-align: right;">Naturalization</th>
+<th style="text-align: right;">Population at year end</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025</td>
+<td>30</td>
+<td>Female</td>
+<td>Swiss</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">× 0.09 (−18)</td>
+<td style="text-align: right;">× 0.01 (−2)</td>
+<td style="text-align: right;">= 180</td>
+<td style="text-align: right;">+ 35</td>
+<td style="text-align: right;">+ 4</td>
+<td style="text-align: right;">= 219</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="example-calculation-30-year-old-swiss-women-1" class="slide level2">
+<h2>Example calculation: 30-year-old Swiss women</h2>
+<div style="font-size: 65%;">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Age</th>
+<th>Sex</th>
+<th>Nat.</th>
+<th style="text-align: right;">Start pop.</th>
+<th style="text-align: right;">Emigration (rate)</th>
+<th style="text-align: right;">Mortality (rate)</th>
+<th style="text-align: right;">Remaining cohort</th>
+<th style="text-align: right;">Immigration</th>
+<th style="text-align: right;">Naturalization</th>
+<th style="text-align: right;">Population at year end</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2025</td>
+<td>30</td>
+<td>Female</td>
+<td>Swiss</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">× 0.09 (−18)</td>
+<td style="text-align: right;">× 0.01 (−2)</td>
+<td style="text-align: right;">= 180</td>
+<td style="text-align: right;">+ 35</td>
+<td style="text-align: right;">+ 4</td>
+<td style="text-align: right;">= 219</td>
+</tr>
+<tr class="even">
+<td>2026</td>
+<td>31</td>
+<td>Female</td>
+<td>Swiss</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">× 0.10 (−21.9)</td>
+<td style="text-align: right;">× 0.01 (−2.19)</td>
+<td style="text-align: right;">= 194.91</td>
+<td style="text-align: right;">+ 37</td>
+<td style="text-align: right;">+ 5</td>
+<td style="text-align: right;">= 236.91</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="equation-in-propop" class="slide level2">
 <h2>Equation in propop</h2>
 <div class="cell">
@@ -2541,8 +2654,8 @@ height: 100% !important;
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-0eb914c64893df6d0789" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0eb914c64893df6d0789">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#ffa81f\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-03afb3d695401fff10b7" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-03afb3d695401fff10b7">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#ffa81f\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -2619,6 +2732,7 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 <span id="cb6-14"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="font-size: 75%;">
+<div class="fragment">
 <p><strong>Mandatory:</strong><br>
 population, parameters, projection period<br>
 <br>
@@ -2631,11 +2745,14 @@ population, parameters, projection period<br>
 - <code>fert_first</code>:<code>fert_last</code>: fertile period 16 to 50<br>
 - <code>share_born_female</code>: 100/205 = 0.488<br>
 - <code>spatial_unit</code>: name of the region(s)</p>
+</div>
 </div></div>
 <div style="font-size: 95%;">
+<div class="fragment">
 <p>Learn more<br>
 <span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> Vignette <a href="https://statistik-aargau.github.io/propop/articles/project_single_region.html">“Projections for a single region”</a><br>
 <span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> <a href="https://github.com/statistik-aargau/propop/blob/main/R/propop.R"><code>propop::propop()</code> function documentation</a>.</p>
+</div>
 </div>
 </section>
 <section id="exercise-2-run-a-quick-example" class="slide level2">
@@ -2735,8 +2852,8 @@ population, parameters, projection period<br>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-a8f7f5602fbde113ed3f" style="width:800px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a8f7f5602fbde113ed3f">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-60c22899a11c98d0cf89" style="width:800px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-60c22899a11c98d0cf89">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
