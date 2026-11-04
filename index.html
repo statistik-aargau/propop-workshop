@@ -2362,50 +2362,48 @@ Norah Efosa &amp; Adrian Gadient
 </section>
 <section id="workshop-aims" class="slide level2">
 <h2>Workshop aims</h2>
+<div style="font-size: 95%;">
 <p>Participants …</p>
 <ul>
 <li>understand how <a href="https://statistik-aargau.github.io/propop/"><code>propop</code></a> implements the cohort component method.</li>
 <li>know the structure and content of required input files.</li>
 <li>can run a population projection with <a href="https://github.com/statistik-aargau/propop/blob/main/R/propop.R"><code>propop::propop()</code></a>.</li>
-<li>can visualize and interpret the results.</li>
 <li>know how to proceed when running projections for subregions.</li>
 </ul>
+</div>
 </section>
-<section id="agenda-3-hours" class="slide level2">
-<h2>Agenda (~ 3 hours)</h2>
-<div style="font-size: 95%;">
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<div style="font-size: 85%;">
 <div class="columns">
-<div class="column" style="width:15%;">
+<div class="column" style="width:20%;">
 <p><br>
-9–10.15<br>
+<br>
+9.15-10.30<br>
 <br>
 <br>
 <br>
-15 min<br>
+<em>15 min</em><br>
+<br>
+<br>
+10.45–12.30<br>
 <br>
 <br>
 <br>
-10.30–12<br>
-<br>
-<br>
-<br>
-12:15<br>
-<br>
+<em>12:30</em><br>
 </p>
-</div><div class="column" style="width:85%;">
+</div><div class="column" style="width:80%;">
 <p><strong>Welcome</strong>, aims, setup check<br>
 <strong>Theory:</strong> cohort component method<br>
 <strong>Theory:</strong> input data and function arguments<br>
 <strong>Exercise 1:</strong> sketch input files with required columns<br>
 <strong>Exercise 2:</strong> run a quick example<br>
+<br>
 <em>Coffee break</em><br>
 <br>
-</p>
-<p><strong>Theory:</strong> get input data and run projection<br>
-<strong>Exercise 2:</strong> run cantonal population projection<br>
-<strong>Theory:</strong> examine and further process results<br>
-<strong>Exercise 3:</strong> visualize and interpret the results<br>
 <strong>Theory:</strong> regionalization and subregions<br>
+<strong>Exercise 2:</strong> run your own population projection <em>or</em><br>
+explore regionalization and subregions further<br>
 <strong>Wrap-up</strong><br>
 <br>
 <em>Lunch</em><br>
@@ -2416,7 +2414,7 @@ Norah Efosa &amp; Adrian Gadient
 </section>
 <section id="setup-check" class="slide level2">
 <h2>Setup check</h2>
-<p>Please check that both lines run without errors:</p>
+<p>Please check that these lines run without errors:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href></a><span class="fu">library</span>(propop)     <span class="co"># version &gt;= 2.2.0</span></span>
 <span id="cb1-2"><a href></a><span class="fu">library</span>(dplyr)</span>
@@ -2457,6 +2455,7 @@ Otherwise:</p>
 </section>
 <section id="cohort-component-method-in-propop" class="slide level2">
 <h2>Cohort component method in <code>propop</code></h2>
+<div style="font-size: 95%;">
 <p>Typically <strong>404 demographic groups</strong>:<br>
 2 nationalities × 2 sexes × 101 ages (0 to 100+)</p>
 <div class="fragment">
@@ -2476,10 +2475,11 @@ Otherwise:</p>
 <li><span style="color: #007AB8;">Who of your uses another number of age groups for the projection?</span></li>
 </ul>
 </div>
+</div>
 </section>
 <section id="the-fso-equation-cohort-transition" class="slide level2">
 <h2>The FSO equation: cohort transition</h2>
-<div style="font-size: 95%;">
+<div style="font-size: 90%;">
 <p><span class="math display">\[
 P_{n,i} = \underbrace{P_{n-1,i-1}}_{\text{Starting population}} \times
 \underbrace{\left[(1-q^p_{n,i}) - (e_{n,i} + \varepsilon_{n,i} + a_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)\right]}_{\text{Rates: mortality, emigration*, citizenship acquisition}}
@@ -2502,10 +2502,10 @@ P_{n,i} = \underbrace{P_{n-1,i-1}}_{\text{Starting population}} \times
 </section>
 <section id="the-fso-equation-adding-newcomers" class="slide level2">
 <h2>The FSO equation: adding newcomers</h2>
-<div style="font-size: 95%;">
+<div style="font-size: 90%;">
 <p><span class="math display">\[
 P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
-\underbrace{(I^E_{n,i} + I^I_{n,i} + A_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)}_{\text{Absolute numbers: immigration, citizenship acquisition}}
+\underbrace{(I^E_{n,i} + I^I_{n,i} + A_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)}_{\text{Absolute numbers: immigration*, citizenship acquisition}}
 \]</span></p>
 <ul>
 <li><strong>Absolute numbers</strong> for immigration add new people.</li>
@@ -2524,8 +2524,8 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 <p>Office fédéral de la statistique (2020). <a href="https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf"><em>Méthodes pour les scénarios cantonaux</em></a></p>
 </div>
 </section>
-<section id="example-calculation-30-year-old-swiss-women" class="slide level2">
-<h2>Example calculation: 30-year-old Swiss women</h2>
+<section id="example-calculation-30-year-old-swiss-female" class="slide level2">
+<h2>Example calculation: 30-year-old Swiss female</h2>
 <div style="font-size: 65%;">
 <table class="caption-top" style="width:100%;">
 <colgroup>
@@ -2546,7 +2546,7 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 <th>Year</th>
 <th>Age</th>
 <th>Sex</th>
-<th>Nat.</th>
+<th>Nationality</th>
 <th style="text-align: right;">Start pop.</th>
 <th style="text-align: right;">Emigration (rate)</th>
 <th style="text-align: right;">Mortality (rate)</th>
@@ -2574,8 +2574,8 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 </table>
 </div>
 </section>
-<section id="example-calculation-30-year-old-swiss-women-1" class="slide level2">
-<h2>Example calculation: 30-year-old Swiss women</h2>
+<section id="example-calculation-30-year-old-swiss-female-1" class="slide level2">
+<h2>Example calculation: 30-year-old Swiss female</h2>
 <div style="font-size: 65%;">
 <table class="caption-top" style="width:100%;">
 <colgroup>
@@ -2596,7 +2596,7 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 <th>Year</th>
 <th>Age</th>
 <th>Sex</th>
-<th>Nat.</th>
+<th>Nationality</th>
 <th style="text-align: right;">Start pop.</th>
 <th style="text-align: right;">Emigration (rate)</th>
 <th style="text-align: right;">Mortality (rate)</th>
@@ -2654,8 +2654,8 @@ height: 100% !important;
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-03afb3d695401fff10b7" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-03afb3d695401fff10b7">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#ffa81f\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-746890c4dc403f195204" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-746890c4dc403f195204">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#fa8128\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -2667,19 +2667,72 @@ height: 100% !important;
 </section>
 <section id="what-does-propop-need" class="slide level2">
 <h2>What does <code>propop()</code> need?</h2>
+<div style="font-size: 95%;">
 <ul>
 <li>A <strong>starting population</strong> (FSO or your own data).</li>
-<li><strong>Mandatory input:</strong> birth, mortality and migration rates for each scenario.<br>
+<li><strong>Mandatory input:</strong> birth, mortality and emigration rates and immigration numbers for each demographic group and scenario.<br>
 <span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette <a href="https://statistik-aargau.github.io/propop/articles/prepare_data.html">“Prepare data”</a><br>
 </li>
 <li><em>Optional: Regionalization and subregional migration</em><br>
 <span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette <a href="https://statistik-aargau.github.io/propop/articles/project_subregions.html">“Projections for subregions”</a>.</li>
 </ul>
+</div>
+</section>
+<section id="function-arguments" class="slide level2">
+<h2>Function arguments</h2>
+<div class="columns">
+<div class="column" style="font-size: 110%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a>propop <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb3-2"><a href></a>    <span class="co"># Mandatory</span></span>
+<span id="cb3-3"><a href></a>    parameters,</span>
+<span id="cb3-4"><a href></a>    population,</span>
+<span id="cb3-5"><a href></a>    year_first,</span>
+<span id="cb3-6"><a href></a>    year_last,</span>
+<span id="cb3-7"><a href></a>    <span class="co"># Main options</span></span>
+<span id="cb3-8"><a href></a>    <span class="at">subregional =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-9"><a href></a>    <span class="at">binational =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-10"><a href></a>    <span class="at">scenarios =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-11"><a href></a>    <span class="co"># Further defaults</span></span>
+<span id="cb3-12"><a href></a>    <span class="at">age_groups =</span> <span class="dv">101</span>,</span>
+<span id="cb3-13"><a href></a>    <span class="at">fert_first =</span> <span class="dv">16</span>,</span>
+<span id="cb3-14"><a href></a>    <span class="at">fert_last =</span> <span class="dv">50</span>,</span>
+<span id="cb3-15"><a href></a>    <span class="at">share_born_female =</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">205</span>,</span>
+<span id="cb3-16"><a href></a>    <span class="at">spatial_unit =</span> <span class="st">&quot;Aargau&quot;</span></span>
+<span id="cb3-17"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="font-size: 70%;">
+<div class="fragment" data-fragment-index="1">
+<p><strong>Mandatory</strong><br>
+<code>parameters</code>, <code>population</code>, projection period (<code>year_first</code>, <code>year_last</code>)</p>
+</div>
+<p><br>
+</p>
+<div class="fragment" data-fragment-index="2">
+<p><strong>Main options</strong><br>
+<code>subregional</code>: migration flows between subregions<br>
+<code>binational</code>: one or two nationalities<br>
+<code>scenarios</code>: default = all scenarios in <code>parameters</code></p>
+</div>
+<p><br>
+</p>
+<div class="fragment" data-fragment-index="3">
+<p><strong>Further defaults</strong><br>
+<code>fert_first</code>, <code>fert_last</code>: fertile period 16 to 50<br>
+<code>share_born_female</code>: 100/205 = 0.488<br>
+<code>spatial_unit</code>: name(s) of the region(s)</p>
+</div>
+</div></div>
+<div class="fragment" style="font-size: 95%;">
+<p>Learn more<br>
+<span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> Vignette <a href="https://statistik-aargau.github.io/propop/articles/project_single_region.html">“Projections for a single region”</a><br>
+<span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> <a href="https://statistik-aargau.github.io/propop/reference/propop.html"><code>propop::propop()</code> function documentation</a></p>
+</div>
 </section>
 <section id="exercise-1-explore-the-data" class="slide level2">
 <h2>Exercise 1: explore the data</h2>
 <div style="font-size: 95%;">
-<p>Look at <code>fso_population</code> and <code>fso_parameters</code>.<br>
+<p>Look at <a href="https://statistik-aargau.github.io/propop/reference/fso_population.html"><code>fso_population</code></a> and <a href="https://statistik-aargau.github.io/propop/reference/fso_parameters.html"><code>fso_parameters</code></a>.<br>
 <br>
 Which scenarios are included in the parameters? Try running <code>propop::propop()</code> only for the “reference” scenario.<br>
 <br>
@@ -2689,9 +2742,9 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 <section id="explore-the-data" class="slide level2">
 <h2>Explore the data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a><span class="fu">library</span>(propop)</span>
-<span id="cb3-2"><a href></a><span class="co"># Which scenarios are included?</span></span>
-<span id="cb3-3"><a href></a><span class="fu">unique</span>(fso_parameters<span class="sc">$</span>scen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href></a><span class="fu">library</span>(propop)</span>
+<span id="cb4-2"><a href></a><span class="co"># Which scenarios are included?</span></span>
+<span id="cb4-3"><a href></a><span class="fu">unique</span>(fso_parameters<span class="sc">$</span>scen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;reference&quot; &quot;high&quot;      &quot;low&quot;      </code></pre>
 </div>
@@ -2699,60 +2752,14 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 <p><br>
 </p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href></a><span class="co"># Run propop for the reference scenario</span></span>
-<span id="cb5-2"><a href></a>projection_reference <span class="ot">&lt;-</span> <span class="fu">propop</span>(</span>
-<span id="cb5-3"><a href></a>  <span class="at">parameters =</span> fso_parameters,</span>
-<span id="cb5-4"><a href></a>  <span class="at">year_first =</span> <span class="dv">2026</span>,</span>
-<span id="cb5-5"><a href></a>  <span class="at">year_last =</span> <span class="dv">2030</span>,</span>
-<span id="cb5-6"><a href></a>  <span class="at">population =</span> fso_population,</span>
-<span id="cb5-7"><a href></a>  <span class="at">scenarios =</span> <span class="st">&quot;reference&quot;</span></span>
-<span id="cb5-8"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="function-arguments" class="slide level2">
-<h2>Function arguments</h2>
-<!-- too much information on this slide at once -->
-<!-- it would be nice to sequentially add and highlight parts of the code -->
-<div class="columns">
-<div class="column" style="font-size: 110%;">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href></a>propop <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb6-2"><a href></a>    parameters,</span>
-<span id="cb6-3"><a href></a>    population,</span>
-<span id="cb6-4"><a href></a>    year_first,</span>
-<span id="cb6-5"><a href></a>    year_last,</span>
-<span id="cb6-6"><a href></a>    <span class="at">subregional =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-7"><a href></a>    <span class="at">binational =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb6-8"><a href></a>    <span class="at">scenarios =</span> <span class="cn">NULL</span>,</span>
-<span id="cb6-9"><a href></a>    <span class="at">age_groups =</span> <span class="dv">101</span>,</span>
-<span id="cb6-10"><a href></a>    <span class="at">fert_first =</span> <span class="dv">16</span>,</span>
-<span id="cb6-11"><a href></a>    <span class="at">fert_last =</span> <span class="dv">50</span>,</span>
-<span id="cb6-12"><a href></a>    <span class="at">share_born_female =</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">205</span>,</span>
-<span id="cb6-13"><a href></a>    <span class="at">spatial_unit =</span> <span class="st">&quot;Aargau&quot;</span></span>
-<span id="cb6-14"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="font-size: 75%;">
-<div class="fragment">
-<p><strong>Mandatory:</strong><br>
-population, parameters, projection period<br>
-<br>
-<strong>Main options</strong><br>
-- subregional migration flows (default: no)<br>
-- one or two nationalities (default: two)<br>
-- <code>scenarios</code>: <code>NULL</code> = all scenarios in <code>parameters</code><br>
-<br>
-<strong>Further defaults</strong><br>
-- <code>fert_first</code>:<code>fert_last</code>: fertile period 16 to 50<br>
-- <code>share_born_female</code>: 100/205 = 0.488<br>
-- <code>spatial_unit</code>: name of the region(s)</p>
-</div>
-</div></div>
-<div style="font-size: 95%;">
-<div class="fragment">
-<p>Learn more<br>
-<span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> Vignette <a href="https://statistik-aargau.github.io/propop/articles/project_single_region.html">“Projections for a single region”</a><br>
-<span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> <a href="https://github.com/statistik-aargau/propop/blob/main/R/propop.R"><code>propop::propop()</code> function documentation</a>.</p>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href></a><span class="co"># Run propop for the reference scenario</span></span>
+<span id="cb6-2"><a href></a>projection_reference <span class="ot">&lt;-</span> <span class="fu">propop</span>(</span>
+<span id="cb6-3"><a href></a>  <span class="at">parameters =</span> fso_parameters,</span>
+<span id="cb6-4"><a href></a>  <span class="at">year_first =</span> <span class="dv">2026</span>,</span>
+<span id="cb6-5"><a href></a>  <span class="at">year_last =</span> <span class="dv">2030</span>,</span>
+<span id="cb6-6"><a href></a>  <span class="at">population =</span> fso_population,</span>
+<span id="cb6-7"><a href></a>  <span class="at">scenarios =</span> <span class="st">&quot;reference&quot;</span></span>
+<span id="cb6-8"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exercise-2-run-a-quick-example" class="slide level2">
@@ -2829,20 +2836,22 @@ population, parameters, projection period<br>
 </section>
 <section id="subregional-migration-and-regionalization-of-components" class="slide level2">
 <h2>Subregional migration and regionalization of components</h2>
+<div style="font-size: 95%;">
 <p>FSO parameters exist for cantons and Switzerland only. For districts or municipalities or other spatial units, <strong>you need to prepare the parameters</strong>.</p>
+</div>
 </section>
 <section id="subregional-migration" class="slide level2">
 <h2>Subregional migration</h2>
-<ul>
-<li><code>propop()</code> can account for migration <strong>between</strong> subregions using:
+<div style="font-size: 95%;">
+<p><code>propop()</code> can account for migration <strong>between</strong> subregions using:</p>
 <ul>
 <li><strong>rates</strong> for emi- and immigration (<code>subregional = &quot;rate&quot;</code>).</li>
 <li><strong>net numbers</strong> for migration (<code>subregional = &quot;net&quot;</code>).<br>
 <br>
 </li>
-</ul></li>
 </ul>
 <p><span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette chapter: <a href="https://statistik-aargau.github.io/propop/articles/project_subregions.html#between-subregions">“Migration between subregions”</a></p>
+</div>
 </section>
 <section id="regionalization-of-components" class="slide level2">
 <h2>Regionalization of components</h2>
@@ -2852,8 +2861,8 @@ population, parameters, projection period<br>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-60c22899a11c98d0cf89" style="width:800px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60c22899a11c98d0cf89">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-19165518e329561f78f8" style="width:800px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19165518e329561f78f8">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
@@ -2864,66 +2873,16 @@ population, parameters, projection period<br>
 <div style="font-size: 95%;">
 <p><span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette chapter: <a href="https://statistik-aargau.github.io/propop/articles/project_subregions.html#breaking-down">“Breaking down to subregions”</a></p>
 </div>
-<!-- # Evaluate and compare -->
-<!-- ## Error metrics -->
-<!-- ::: {style="font-size: 80%;"} -->
-<!-- | Metric | What it tells you | Why useful | -->
-<!-- |-----------------|--------------------------|-------------------------| -->
-<!-- | `pe` (percentage error) | Deviation of projection from benchmark, in % | Shows **direction**: over- or underestimation | -->
-<!-- | `ape` (absolute percentage error) | Size of the deviation, ignoring direction | Errors can't cancel out; easy to interpret | -->
-<!-- | `w_ape` (weighted APE) | APE weighted by group size | Small groups don't dominate the result | -->
-<!-- | `mpe` (aggregated) | Mean of `pe` across all observations | Reveals systematic **bias** | -->
-<!-- | `ape_under_5` (aggregated) | Share of observations with small error | Quick quality indicator | -->
-<!-- ::: -->
-<!-- ## Weights and grouping -->
-<!-- ::: {style="font-size: 85%;"} -->
-<!-- [**Weights**]{style="color: #007AB8;"} -->
-<!-- []{style="color: #4c8562;"} Small groups tend to have larger errors; weighting corrects for this (example: `ape` 0.39 / 0.36 → `w_ape` 0.24 / 0.07)\ -->
-<!-- []{style="color: #FF82a9;"} Large groups dominate; poor fit in small groups (e.g. very old people) is easily hidden\ -->
-<!-- []{style="color: #FF82a9;"} Results depend on the chosen weighting (`weight_groups`) -->
-<!-- \ -->
-<!-- [**Larger age groups** (e.g. 0-19, 20-64, 65+)]{style="color: #007AB8;"} -->
-<!-- []{style="color: #4c8562;"} Fewer tiny groups, so fewer problems when the benchmark is 0\ -->
-<!-- []{style="color: #4c8562;"} More stable, more readable results\ -->
-<!-- []{style="color: #FF82a9;"} Errors can cancel out within a group\ -->
-<!-- []{style="color: #FF82a9;"} Less detail about *where* the model is weak -->
-<!-- ::: -->
 </section>
-<section id="exercise-3-your-own-projections" class="slide level2">
-<h2>Exercise 3: your own projections</h2>
+<section id="exercise-3-projections-for-subregions" class="slide level2">
+<h2>Exercise 3: Projections for subregions</h2>
 <div style="font-size: 95%;">
-<p>Compare the projections for your canton to</p>
-<ul>
-<li>the <strong>FSO benchmark</strong> (column “fso_projection” in <code>fso_parameters</code>).</li>
-<li><strong>your own projections</strong>.<br>
-</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Using <strong>your own data</strong> or package data, try running <strong>projections for subregions</strong>.<br>
+<br>
+<em>Optional: Explore the methods for calculating subregional migration input data further, e.g. by varying <code>year_range</code> or <code>method</code> in <a href="https://statistik-aargau.github.io/propop/reference/calculate_rates.html"><code>calculate_rates()</code></a></em></p>
 </div>
-<p><strong>Steps</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li><p>Prepare your own data or download the data for your canton using the propop-functions <code>get_population()</code> and <code>get_parameters()</code>.</p></li>
-<li><p>Run the projections.</p></li>
-<li><p>Prepare the evaluation (<code>prepare_evaluation()</code>).</p></li>
-<li><p>Calculate error metrics (<code>compute_measures()</code> and <code>aggregate_measures()</code>).</p></li>
-<li><p>Visualize the differences between models.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p><br>
-</p>
-<div class="fragment">
-<p><span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette chapter: see Vignette <a href="https://statistik-aargau.github.io/propop/articles/evaluate.html">“Evaluate projections”</a>.</p>
+<div style="font-size: 95%;">
+<p><span style="color: #007AB8; font-size: 30px;"><i class="fa-solid fa-arrow-right" aria-label="arrow-right"></i></span> see Vignette chapter: <a href="https://statistik-aargau.github.io/propop/articles/project_subregions.html#between-subregions">“Migration between subregions”</a></p>
 </div>
 </section></section>
 <section>
@@ -2953,7 +2912,11 @@ Shares of the canton-wide number of people per subregion, from past migration (<
 Mean emigration rate per group and subregion from past migration (<code>emi_rate</code>)</p>
 </div>
 </div><p><br>
-::: {.column width=“25%” style=“font-size: 65%;”} ::: {.fragment} <span style="color: #007AB8;"><i class="fa-solid fa-chart-line fa-1x" aria-label="chart-line"></i></span> <strong>3. Projection</strong></p><p><code>propop()</code></p><ul>
+</p><div class="column" style="font-size: 65%;">
+<div class="fragment">
+<p><span style="color: #007AB8;"><i class="fa-solid fa-chart-line fa-1x" aria-label="chart-line"></i></span> <strong>3. Projection</strong></p>
+<p><code>propop()</code></p>
+<ul>
 <li><code>scenarios</code> (e.g. reference, high, low)</li>
 <li><code>binational</code>: with or without nationality distinction</li>
 <li><code>subregional</code>:
@@ -2964,8 +2927,7 @@ Mean emigration rate per group and subregion from past migration (<code>emi_rate
 </ul></li>
 </ul>
 </div>
-<p>:::</p>
-<div class="column" style="font-size: 65%;">
+</div><div class="column" style="font-size: 65%;">
 <div class="fragment">
 <p><span style="color: #007AB8;"><i class="fa-solid fa-magnifying-glass-chart fa-1x" aria-label="magnifying-glass-chart"></i></span> <strong>4. Evaluate</strong></p>
 <p><code>prepare_evaluation()</code><br>
@@ -2975,24 +2937,28 @@ Error metrics per observation (<code>pe</code>, <code>ape</code>, <code>w_ape</c
 <p><code>aggregate_measures()</code><br>
 Summary metrics across observations</p>
 </div>
-</div><p>::::</p>
+</div></div>
 </section>
 <section id="future-ideas-for-propop" class="slide level2">
 <h2>Future ideas for <code>propop</code></h2>
+<div style="font-size: 95%;">
 <ul>
 <li>Considering housing capacities, planned housing developments and municipal attractiveness.</li>
 <li>Further evaluation tools and regionalization helpers.</li>
 <li><strong>Interested in contributing?</strong> Get in touch with the maintainer.</li>
 </ul>
+</div>
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
+<div style="font-size: 95%;">
 <ul>
 <li><a href="https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf">Office fédéral de la statistique (2020). <em>Méthodes pour les scénarios cantonaux</em>.</a></li>
 <li>Preston, S., Guillot, M., &amp; Heuveline, P. (2000). <em>Demography: Measuring and Modeling Population Processes</em>. Wiley.</li>
 <li>Statistik Aargau (2025). <a href="https://www.ag.ch/media/kanton-aargau/dfr/dokumente/statistik/statistische-daten/oeffentliche-statistik/01-bevoelkerung/kantonsdaten/bevoelkerungsprognosen/bevoelkerungsprojektion-hauptbericht-2025.pdf">Bericht Bevölkerungsprojektion</a>, <a href="https://www.ag.ch/media/kanton-aargau/dfr/dokumente/statistik/statistische-daten/oeffentliche-statistik/01-bevoelkerung/kantonsdaten/bevoelkerungsprognosen/bev-lkerungsprojektion-technischerbegleitbericht-2025.pdf">Technischer Begleitbericht</a>.</li>
 <li><a href="https://statistik.admin.ch/de/asset/34687099">Bundesamt für Statistik BFS (2025). Szenarien zur Bevölkerungsentwicklung der Schweiz und der Kantone, 2025–2055.</a></li>
 </ul>
+</div>
 </section>
 <section id="questions-feedback" class="slide level2">
 <h2>Questions? Feedback?</h2>

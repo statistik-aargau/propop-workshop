@@ -34,29 +34,28 @@ Participants ...
 -   know how to proceed when running projections for subregions.
 :::
 
-## Agenda (~ 3 hours)
+## Agenda
 
 ::: {style="font-size: 85%;"}
 :::: {.columns}
-::: {.column width="15%"}
-\
-9–10.15\
+::: {.column width="20%"}
 \
 \
-\
-15 min\
+9.15-10.30\
 \
 \
 \
-10.30–12\
+*15 min*\
+\
+\
+10.45–12.30\
 \
 \
 \
-12:15
-\
+*12:30*
 \
 :::
-::: {.column width="85%"}
+::: {.column width="80%"}
 
 **Welcome**, aims, setup check\
 **Theory:** cohort component method\
@@ -64,14 +63,12 @@ Participants ...
 **Exercise 1:** sketch input files with required columns\
 **Exercise 2:** run a quick example
 \
+\
 *Coffee break*\
 \
-
-**Theory:** get input data and run projection\
-**Exercise 2:** run cantonal population projection\
-**Theory:** examine and further process results\
-**Exercise 3:** visualize and interpret the results\
 **Theory:** regionalization and subregions\
+**Exercise 2:** run your own population projection *or*\
+  explore regionalization and subregions further\
 **Wrap-up**\
 \
 *Lunch*\
