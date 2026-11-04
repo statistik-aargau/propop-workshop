@@ -25,17 +25,18 @@ editor_options:
 
 ## Workshop aims
 
+::: {style="font-size: 95%;"}
 Participants ...
 
 -   understand how [`propop`](https://statistik-aargau.github.io/propop/) implements the cohort component method.
 -   know the structure and content of required input files.
 -   can run a population projection with [`propop::propop()`](https://github.com/statistik-aargau/propop/blob/main/R/propop.R).
--   can visualize and interpret the results.
 -   know how to proceed when running projections for subregions.
+:::
 
 ## Agenda (~ 3 hours)
 
-::: {style="font-size: 95%;"}
+::: {style="font-size: 85%;"}
 :::: {.columns}
 ::: {.column width="15%"}
 \
@@ -81,7 +82,7 @@ Participants ...
 
 ## Setup check
 
-Please check that both lines run without errors:
+Please check that these lines run without errors:
 
 ```{r}
 #| echo: true
@@ -126,6 +127,7 @@ Preston, Guillot, and Heuveline (2000); Statistik Aargau (2025); Bundesamt für 
 
 ## Cohort component method in `propop`
 
+::: {style="font-size: 95%;"}
 Typically **404 demographic groups**:\
 2 nationalities × 2 sexes × 101 ages (0 to 100+)
 
@@ -142,10 +144,11 @@ Typically **404 demographic groups**:\
 -   [Who of you distinguishes between nationalities for their projection?]{style="color: #007AB8;"}\
 -   [Who of your uses another number of age groups for the projection?]{style="color: #007AB8;"}
 :::
+:::
 
 ## The FSO equation: cohort transition
 
-::: {style="font-size: 95%;"}
+::: {style="font-size: 90%;"}
 $$
 P_{n,i} = \underbrace{P_{n-1,i-1}}_{\text{Starting population}} \times
 \underbrace{\left[(1-q^p_{n,i}) - (e_{n,i} + \varepsilon_{n,i} + a_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)\right]}_{\text{Rates: mortality, emigration*, citizenship acquisition}}
@@ -165,10 +168,10 @@ Office fédéral de la statistique (2020). [*Méthodes pour les scénarios canto
 
 ## The FSO equation: adding newcomers
 
-::: {style="font-size: 95%;"}
+::: {style="font-size: 90%;"}
 $$
 P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
-\underbrace{(I^E_{n,i} + I^I_{n,i} + A_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)}_{\text{Absolute numbers: immigration, citizenship acquisition}}
+\underbrace{(I^E_{n,i} + I^I_{n,i} + A_{n,i})\left(1-\tfrac{q^p_{n,i}}{2}\right)}_{\text{Absolute numbers: immigration*, citizenship acquisition}}
 $$
 
 -   **Absolute numbers** for immigration add new people.
@@ -184,18 +187,18 @@ $$
 Office fédéral de la statistique (2020). [*Méthodes pour les scénarios cantonaux*](https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf)
 :::
 
-## Example calculation: 30-year-old Swiss women
+## Example calculation: 30-year-old Swiss female
 
 ::: {style="font-size: 65%;"}
-| Year | Age | Sex | Nat. | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
+| Year | Age | Sex | Nationality | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
 |------|-----|-----|------|-----------------:|------------------:|-------------:|-----------------:|------------:|---------------:|-----------------------:|
 | 2025 | 30 | Female | Swiss | 200 | × 0.09 (−18) | × 0.01 (−2) | = 180 | + 35 | + 4 | = 219 |
 :::
 
-## Example calculation: 30-year-old Swiss women
+## Example calculation: 30-year-old Swiss female
 
 ::: {style="font-size: 65%;"}
-| Year | Age | Sex | Nat. | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
+| Year | Age | Sex | Nationality | Start pop. | Emigration (rate) | Mortality (rate) | Remaining cohort | Immigration | Naturalization | Population at year end |
 |------|-----|-----|------|-----------------:|------------------:|-------------:|-----------------:|------------:|---------------:|-----------------------:|
 | 2025 | 30 | Female | Swiss | 200 | × 0.09 (−18) | × 0.01 (−2) | = 180 | + 35 | + 4 | = 219 |
 | 2026 | 31 | Female | Swiss | 219 | × 0.10 (−21.9) | × 0.01 (−2.19) | = 194.91 | + 37 | + 5 | = 236.91 |
@@ -232,7 +235,7 @@ digraph flowchart {
   A [label = < <b> propop() </b>>, style = filled, color = 'transparent', fillcolor = 'transparent']
   B [label = < Uses <i>purrr::reduce() </i> to iterate across <BR/> <b> spatial units </b> ,<b> scenarios </b> and <b>years </b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = 'transparent']
   C [label = < <b> year t </b><BR/>start year or projected year>, fontcolor = '#007AB8']
-  D [label = < <b> project_population() </b><BR/>wrapper function>, fontcolor = '#ffa81f']
+  D [label = < <b> project_population() </b><BR/>wrapper function>, fontcolor = '#fa8128']
   E [label = < <b> 1. advance_population() </b><BR/>population ages by one year>, fillcolor = 'transparent']
   F [label = < <b> 2. calculate_projection() </b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = 'transparent']
   G [label = < <b> 3. calculate_newborns() </b><BR/>calculates births>, fillcolor = 'transparent']
@@ -263,25 +266,89 @@ graph
 
 ## What does `propop()` need?
 
+::: {style="font-size: 95%;"}
 -   A **starting population** (FSO or your own data).
--   **Mandatory input:** birth, mortality and migration rates for each scenario.
+-   **Mandatory input:** birth, mortality and emigration rates and immigration numbers for each demographic group and scenario.
 \
 <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette ["Prepare data"](https://statistik-aargau.github.io/propop/articles/prepare_data.html)
 \
 -   *Optional: Regionalization and subregional migration*
 \
 <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette ["Projections for subregions"](https://statistik-aargau.github.io/propop/articles/project_subregions.html).
+:::
+
+## Function arguments
+
+:::: {.columns}
+
+::: {.column width="45%" style="font-size: 110%;"}
+```{r}
+#| echo: true
+#| eval: false
+propop <- function(
+    # Mandatory
+    parameters,
+    population,
+    year_first,
+    year_last,
+    # Main options
+    subregional = FALSE,
+    binational = TRUE,
+    scenarios = NULL,
+    # Further defaults
+    age_groups = 101,
+    fert_first = 16,
+    fert_last = 50,
+    share_born_female = 100 / 205,
+    spatial_unit = "Aargau"
+)
+```
+:::
+
+::: {.column width="55%" style="font-size: 70%;"}
+::: {.fragment fragment-index=1}
+**Mandatory**\
+`parameters`, `population`, projection period (`year_first`, `year_last`)
+:::
+
+\
+
+::: {.fragment fragment-index=2}
+**Main options**\
+`subregional`: migration flows between subregions\
+`binational`: one or two nationalities\
+`scenarios`: default = all scenarios in `parameters`
+:::
+
+\
+
+::: {.fragment fragment-index=3}
+**Further defaults**\
+`fert_first`, `fert_last`: fertile period 16 to 50\
+`share_born_female`: 100/205 = 0.488\
+`spatial_unit`: name(s) of the region(s)
+:::
+:::
+
+::::
+
+::: {.fragment style="font-size: 95%;"}
+Learn more\
+<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> Vignette ["Projections for a single region"](https://statistik-aargau.github.io/propop/articles/project_single_region.html)\
+<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> [`propop::propop()` function documentation](https://statistik-aargau.github.io/propop/reference/propop.html)
+:::
 
 ## Exercise 1: explore the data
 
 ::: {style="font-size: 95%;"}
-Look at `fso_population` and `fso_parameters`.\
+Look at [`fso_population`](https://statistik-aargau.github.io/propop/reference/fso_population.html) and [`fso_parameters`](https://statistik-aargau.github.io/propop/reference/fso_parameters.html).\
 \
 Which scenarios are included in the parameters? Try running `propop::propop()` only for the "reference" scenario.
 \
 \
 [**Discuss:** How do the default settings of `propop()` differ from your projections?]{style="color: #007AB8;"}
 :::
+
 
 ## Explore the data
 
@@ -305,61 +372,6 @@ projection_reference <- propop(
   scenarios = "reference"
 )
 ```
-
-## Function arguments
-
-<!-- too much information on this slide at once -->
-<!-- it would be nice to sequentially add and highlight parts of the code -->
-
-:::: {.columns}
-::: {.column width="45%" style="font-size: 110%;"}
-```{r}
-#| echo: true
-#| eval: false
-propop <- function(
-    parameters,
-    population,
-    year_first,
-    year_last,
-    subregional = FALSE,
-    binational = TRUE,
-    scenarios = NULL,
-    age_groups = 101,
-    fert_first = 16,
-    fert_last = 50,
-    share_born_female = 100 / 205,
-    spatial_unit = "Aargau"
-)
-```
-:::
-
-::: {.column width="55%" style="font-size: 75%;"}
-:::{ .fragment}
-**Mandatory:**\
-population, parameters, projection period\
-\
-**Main options**\
--   subregional migration flows (default: no)\
--   one or two nationalities (default: two)\
--   `scenarios`: `NULL` = all scenarios in `parameters`\
-\
-**Further defaults**\
--   `fert_first`:`fert_last`: fertile period 16 to 50\
--   `share_born_female`: 100/205 = 0.488\
--   `spatial_unit`: name of the region(s)
-:::
-:::
-
-::::
-
-::: {style="font-size: 95%;"}
-:::{ .fragment}
-Learn more\
-<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> Vignette ["Projections for a single region"](https://statistik-aargau.github.io/propop/articles/project_single_region.html)\
-<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> [`propop::propop()` function documentation](https://github.com/statistik-aargau/propop/blob/main/R/propop.R).
-:::
-:::
-
 
 ## Exercise 2: run a quick example
 
@@ -416,18 +428,22 @@ str(projection_canton_2030)
 
 ## Subregional migration and regionalization of components
 
+::: {style="font-size: 95%;"}
 FSO parameters exist for cantons and Switzerland only. For districts or municipalities or other spatial units, **you need to prepare the parameters**.
-
+:::
 
 ## Subregional migration
 
--   `propop()` can account for migration **between** subregions using:
-    -   **rates** for emi- and immigration (`subregional = "rate"`).
-    -   **net numbers** for migration (`subregional = "net"`).
+::: {style="font-size: 95%;"}
+`propop()` can account for migration **between** subregions using:
+
+   -   **rates** for emi- and immigration (`subregional = "rate"`).
+   -   **net numbers** for migration (`subregional = "net"`).
 \
 \
 
 <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: ["Migration between subregions"](https://statistik-aargau.github.io/propop/articles/project_subregions.html#between-subregions)
+:::
 
 ## Regionalization of components
 
@@ -460,6 +476,14 @@ graph
 
 ::: {style="font-size: 95%;"}
 <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: ["Breaking down to subregions"](https://statistik-aargau.github.io/propop/articles/project_subregions.html#breaking-down)
+:::
+
+## Exercise 3: Projections for subregions
+
+Using **your own data** or package data, try running projections for subregions.
+
+::: {style="font-size: 95%;"}
+<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: ["Migration between subregions"](https://statistik-aargau.github.io/propop/articles/project_subregions.html#between-subregions)
 :::
 
 <!-- # Evaluate and compare -->
@@ -495,36 +519,36 @@ graph
 <!-- [{{< fa circle-minus size=1x title="minus" >}}]{style="color: #FF82a9;"} Less detail about *where* the model is weak -->
 <!-- ::: -->
 
-## Exercise 3: your own projections
+<!-- ## Exercise 3: your own projections -->
 
-::: {style="font-size: 95%;"}
-Compare the projections for your canton to 
+<!-- ::: {style="font-size: 95%;"} -->
+<!-- Compare the projections for your canton to  -->
 
--   the **FSO benchmark** (column "fso_projection" in `fso_parameters`).
--   **your own projections**.
-\
+<!-- -   the **FSO benchmark** (column "fso_projection" in `fso_parameters`). -->
+<!-- -   **your own projections**. -->
+<!-- \ -->
 
-::: {.fragment}
-::: {.callout-note}
-## Steps
-1. Prepare your own data or download the data for your canton using the propop-functions `get_population()` and `get_parameters()`.
+<!-- ::: {.fragment} -->
+<!-- ::: {.callout-note} -->
+<!-- ## Steps -->
+<!-- 1. Prepare your own data or download the data for your canton using the propop-functions `get_population()` and `get_parameters()`. -->
 
-2. Run the projections.
+<!-- 2. Run the projections. -->
 
-3. Prepare the evaluation (`prepare_evaluation()`).
+<!-- 3. Prepare the evaluation (`prepare_evaluation()`). -->
 
-4. Calculate error metrics (`compute_measures()` and `aggregate_measures()`).
+<!-- 4. Calculate error metrics (`compute_measures()` and `aggregate_measures()`). -->
 
-5. Visualize the differences between models.
-:::
-:::
-:::
+<!-- 5. Visualize the differences between models. -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: -->
 
-\
+<!-- \ -->
 
-::: {.fragment}
-<span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: see Vignette ["Evaluate projections"](https://statistik-aargau.github.io/propop/articles/evaluate.html).
-:::
+<!-- ::: {.fragment} -->
+<!-- <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: see Vignette ["Evaluate projections"](https://statistik-aargau.github.io/propop/articles/evaluate.html). -->
+<!-- ::: -->
 
 # Wrap-up
 
@@ -558,7 +582,9 @@ Shares of the canton-wide number of people per subregion, from past migration (`
 Mean emigration rate per group and subregion from past migration (`emi_rate`)
 :::
 :::
+
 \
+
 ::: {.column width="25%" style="font-size: 65%;"}
 ::: {.fragment}
 [{{< fa chart-line size=1x >}}]{style="color: #007AB8;"}  **3. Projection**
@@ -594,16 +620,20 @@ Summary metrics across observations
 
 ## Future ideas for `propop`
 
+::: {style="font-size: 95%;"}
 -   Considering housing capacities, planned housing developments and municipal attractiveness.
 -   Further evaluation tools and regionalization helpers.
 -   **Interested in contributing?** Get in touch with the maintainer.
+:::
 
 ## References
 
+::: {style="font-size: 95%;"}
 -   [Office fédéral de la statistique (2020). *Méthodes pour les scénarios cantonaux*.](https://github.com/statistik-aargau/propop-additional-resources/blob/358ffa280f3777af34d3ac4b2782c1171ed93beb/FSO_2020_Meth_scenarios%20cant.pdf)
 -   Preston, S., Guillot, M., & Heuveline, P. (2000). *Demography: Measuring and Modeling Population Processes*. Wiley.
 -   Statistik Aargau (2025). [Bericht Bevölkerungsprojektion](https://www.ag.ch/media/kanton-aargau/dfr/dokumente/statistik/statistische-daten/oeffentliche-statistik/01-bevoelkerung/kantonsdaten/bevoelkerungsprognosen/bevoelkerungsprojektion-hauptbericht-2025.pdf), [Technischer Begleitbericht](https://www.ag.ch/media/kanton-aargau/dfr/dokumente/statistik/statistische-daten/oeffentliche-statistik/01-bevoelkerung/kantonsdaten/bevoelkerungsprognosen/bev-lkerungsprojektion-technischerbegleitbericht-2025.pdf).
 -   [Bundesamt für Statistik BFS (2025). Szenarien zur Bevölkerungsentwicklung der Schweiz und der Kantone, 2025–2055.](https://statistik.admin.ch/de/asset/34687099)
+:::
 
 ## Questions? Feedback?
 
