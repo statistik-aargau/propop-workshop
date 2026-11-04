@@ -480,7 +480,12 @@ graph
 
 ## Exercise 3: Projections for subregions
 
-Using **your own data** or package data, try running projections for subregions.
+::: {style="font-size: 95%;"}
+Using **your own data** or package data, try running **projections for subregions**.
+\
+\
+*Optional: Explore the methods for calculating subregional migration input data further, e.g. by varying `year_range` or `method` in [`calculate_rates()`](https://statistik-aargau.github.io/propop/reference/calculate_rates.html)*
+:::
 
 ::: {style="font-size: 95%;"}
 <span style="color: #007AB8; font-size: 30px;">{{< fa arrow-right >}}</span> see Vignette chapter: ["Migration between subregions"](https://statistik-aargau.github.io/propop/articles/project_subregions.html#between-subregions)
