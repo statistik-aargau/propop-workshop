@@ -858,13 +858,13 @@
     },
     "propop": {
       "Package": "propop",
-      "Version": "2.2.1",
+      "Version": "2.2.2",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "propop",
       "RemoteUsername": "statistik-aargau",
-      "RemoteSha": "645095db33134836e3bced75aebd043e186b3290",
+      "RemoteSha": "264b8ececc8fff465097cf9365db13b7a9c905c9",
       "Requirements": [
         "BFS",
         "R",
@@ -878,7 +878,7 @@
         "tidyr",
         "vctrs"
       ],
-      "Hash": "6b907513dfd5a567a518c5f8e7444e99"
+      "Hash": "67377d4400a5515a8c839ad52e6d44a9"
     },
     "proxy": {
       "Package": "proxy",
