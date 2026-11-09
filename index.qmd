@@ -79,6 +79,9 @@ Participants ...
 
 ## Setup check
 
+Click [here](https://statistik-aargau.github.io/propop-workshop/#/title-slide) to follow the workshop slides
+\
+
 Please check that these lines run without errors:
 
 ```{r}
