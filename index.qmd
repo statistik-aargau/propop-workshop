@@ -295,8 +295,8 @@ propop <- function(
     scenarios = NULL,
     # Further defaults
     age_groups = 101,
-    fert_first = 16,
-    fert_last = 50,
+    fert_first = 15,
+    fert_last = 49,
     share_born_female = 100 / 205,
     spatial_unit = "Aargau"
 )
@@ -322,7 +322,7 @@ propop <- function(
 
 ::: {.fragment fragment-index=3}
 **Further defaults**\
-`fert_first`, `fert_last`: fertile period 16 to 50\
+`fert_first`, `fert_last`: fertile period 15 to 49\
 `share_born_female`: 100/205 = 0.488\
 `spatial_unit`: name(s) of the region(s)
 :::
@@ -354,6 +354,8 @@ Which scenarios are included in the parameters? Try running `propop::propop()` o
 #| echo: true
 #| eval: true
 library(propop)
+# Which columns are in `fso_parameters`
+colnames(fso_parameters)
 # Which scenarios are included?
 unique(fso_parameters$scen)
 ```
@@ -394,25 +396,25 @@ projection_canton_2030 <- propop(
 ## Console-Feedback
 
 ```{r, echo = TRUE, eval = FALSE}
-── Running projection for 3 scenario(s). ──────────────────────────────────────────────────────
-✔ Processing completed in [1.8s]                                                              
+── Running projection for 3 scenario(s). ───────────────────────────────────────
+✔ Processing completed in [2s]                                                 
 
-── Settings used for the projection ───────────────────────────────────────────────────────────
+── Settings used for the projection ────────────────────────────────────────────
 Scenario(s): "high", "low", and "reference"
 Year of starting population: 2025
 Number of age groups: 101
-Fertile period: 16-50
+Fertile period: 15-49
 Share of female newborns: 0.488
 Size of starting population: 743768
 Projection period: 2026-2030
 Nationality-specific projection: "yes"
 Subregional migration: "no"
-───────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
 Projected population size by 2030:
 - Scenario "high": 796100
 - Scenario "low": 767104
 - Scenario "reference": 781837
-═══════════════════════════════════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════════════════════
 ```
 
 ## Inspect the results with `str()`
