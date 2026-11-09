@@ -2419,16 +2419,14 @@ explore regionalization and subregions further<br>
 <p>Please check that these lines run without errors:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href></a><span class="fu">library</span>(propop)     <span class="co"># version &gt;= 2.2.0</span></span>
-<span id="cb1-2"><a href></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br>
 Otherwise:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
 <span id="cb2-2"><a href></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;statistik-aargau/propop&quot;</span>)</span>
-<span id="cb2-3"><a href></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb2-4"><a href></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section>
@@ -2656,8 +2654,8 @@ height: 100% !important;
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-ff882ccae7e4670469cd" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff882ccae7e4670469cd">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#fa8128\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-79dcb7fc38c85bbd13ec" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-79dcb7fc38c85bbd13ec">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#fa8128\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -2863,8 +2861,8 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-4a4ff03b6b3fa6212114" style="width:800px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4a4ff03b6b3fa6212114">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b265743f38108410a4fe" style="width:800px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b265743f38108410a4fe">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>

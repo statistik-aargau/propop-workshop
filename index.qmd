@@ -89,7 +89,6 @@ Please check that these lines run without errors:
 #| eval: false
 library(propop)     # version >= 2.2.0
 library(dplyr)
-library(ggplot2)
 ```
 \
 Otherwise:
@@ -100,7 +99,6 @@ Otherwise:
 install.packages("devtools")
 devtools::install_github("statistik-aargau/propop")
 install.packages("dplyr")
-install.packages("ggplot2")
 ```
 
 # The cohort component method
