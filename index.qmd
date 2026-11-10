@@ -441,7 +441,7 @@ You also need a **method to account for migration between subregions**.
   - Replicate past patterns
 - Rate-parameters
   - Use cantonal parameters 
-  - `{propop_birth}` for births
+  - `{propopbirth}` for births
   - `propop::calculate_shares()`
 
 ## Subregions: Migration between subregions
