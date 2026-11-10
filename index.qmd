@@ -426,13 +426,25 @@ str(projection_canton_2030)
 
 # Coffee break {data-background-color="#004774"}
 
-## Subregional migration and regionalization of components
+## Subregions: Regionalization of components and migration
 
 ::: {style="font-size: 95%;"}
 FSO parameters exist for cantons and Switzerland only. For districts or municipalities or other spatial units, **you need to prepare the parameters**.
+
+You also need a **method to account for migration between subregions**.
 :::
 
-## Subregional migration
+## Subregions: Regionalization of components
+
+- Number-of-people parameters
+  - Share of total population
+  - Replicate past patterns
+- Rate-parameters
+  - Use cantonal parameters 
+  - `{propop_birth}` for births
+  - `propop::calculate_shares()`
+
+## Subregions: Migration between subregions
 
 ::: {style="font-size: 95%;"}
 `propop()` can account for migration **between** subregions using:
