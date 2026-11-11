@@ -2488,12 +2488,10 @@ P_{n,i} = \underbrace{P_{n-1,i-1}}_{\text{Starting population}} \times
 <li><strong>Rates</strong> determine how many people reach the next age (<span class="math inline">\(i\)</span>) cohort per year (<span class="math inline">\(n\)</span>).</li>
 <li>Emigrants are exposed to half a year of mortality: factor <span class="math inline">\((1 - q/2)\)</span>.</li>
 <li>*emigration rates:<br>
-
-<ul>
+</li>
 <li><span class="math inline">\(e\)</span> = international emigration<br>
 </li>
 <li><span class="math inline">\(\varepsilon\)</span> = intercantonal emigration</li>
-</ul></li>
 </ul>
 </div>
 <div class="absolute" style="font-size: 18px;left: 0px; bottom: 20px; ">
@@ -2512,12 +2510,10 @@ P_{n,i} = P_{n-1,i-1} \times \left[\dots\right] +
 <li><strong>Births</strong> are not shown in this equation (see <a href="https://github.com/statistik-aargau/propop/blob/main/R/calculate_newborns.R"><code>calculate_newborns()</code></a>)).</li>
 <li>Immigrants are exposed to half a year of mortality: factor <span class="math inline">\((1 - q/2)\)</span>.</li>
 <li>*immigration numbers:<br>
-
-<ul>
+</li>
 <li><span class="math inline">\(I^E\)</span> = international immigration<br>
 </li>
 <li><span class="math inline">\(I^I\)</span> = intercantonal immigration</li>
-</ul></li>
 </ul>
 </div>
 <div class="absolute" style="font-size: 18px;left: 0px; bottom: 20px; ">
@@ -2654,8 +2650,8 @@ height: 100% !important;
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-9b94b06c635b8278ee5d" style="width:100%;height:550px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9b94b06c635b8278ee5d">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#fa8128\"]\n  E [label = < <b> 1. advance_population() <\/b><BR/>population ages by one year>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition;<BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns() <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c89d9afc365a76cfe52f" style="width:100%;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c89d9afc365a76cfe52f">{"x":{"diagram":"\ndigraph flowchart {\n  # Define graph attributes\n  graph [layout = dot, rankdir = TB]\n\n  # Define node styles\n  node [shape = box, style = filled, fillcolor = \"transparent\", fontname = Arial, color = \"transparent\"]\n\n  # Define nodes\n  A [label = < <b> propop() <\/b>>, style = filled, color = \"transparent\", fillcolor = \"transparent\"]\n  B [label = < Uses <i>purrr::reduce() <\/i> to iterate across <BR/> <b> spatial units <\/b> ,<b> scenarios <\/b> and <b>years <\/b> in parameters and population <BR/>and to bind results of year t and year t + 1>, color = \"transparent\"]\n  C [label = < <b> year t <\/b><BR/>start year or projected year>, fontcolor = \"#007AB8\"]\n  D [label = < <b> project_population() <\/b><BR/>wrapper function>, fontcolor = \"#fa8128\"]\n  E [label = < <b> 1. advance_population()   <\/b><BR/>population ages by one year; <BR/> aggregates population 100+>, fillcolor = \"transparent\"]\n  F [label = < <b> 2. calculate_projection() <\/b><BR/>cohort transition>, fillcolor = \"transparent\"]\n  G [label = < <b> 3. calculate_newborns()   <\/b><BR/>calculates births>, fillcolor = \"transparent\"]\n  H [label = < <b> results for year t + 1 <\/b>>, fontcolor = \"#007AB8\"]\n\n  # Align side by side\n{ rank=same; A }\n{ rank=same; C; D}\n\n  # Define edges (connections)\n  A -> B\n  B -> C\n  C -> D\n  D -> E\n  E -> F\n  F -> G\n  G -> H\n  H -> C\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div></div>
@@ -2685,20 +2681,20 @@ height: 100% !important;
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href></a>propop <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
 <span id="cb3-2"><a href></a>    <span class="co"># Mandatory</span></span>
-<span id="cb3-3"><a href></a>    parameters,</span>
-<span id="cb3-4"><a href></a>    population,</span>
-<span id="cb3-5"><a href></a>    year_first,</span>
-<span id="cb3-6"><a href></a>    year_last,</span>
-<span id="cb3-7"><a href></a>    <span class="co"># Main options</span></span>
-<span id="cb3-8"><a href></a>    <span class="at">subregional =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-9"><a href></a>    <span class="at">binational =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-10"><a href></a>    <span class="at">scenarios =</span> <span class="cn">NULL</span>,</span>
-<span id="cb3-11"><a href></a>    <span class="co"># Further defaults</span></span>
-<span id="cb3-12"><a href></a>    <span class="at">age_groups =</span> <span class="dv">101</span>,</span>
-<span id="cb3-13"><a href></a>    <span class="at">fert_first =</span> <span class="dv">15</span>,</span>
-<span id="cb3-14"><a href></a>    <span class="at">fert_last =</span> <span class="dv">49</span>,</span>
-<span id="cb3-15"><a href></a>    <span class="at">share_born_female =</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">205</span>,</span>
-<span id="cb3-16"><a href></a>    <span class="at">spatial_unit =</span> <span class="st">&quot;Aargau&quot;</span></span>
+<span id="cb3-3"><a href></a>  parameters,</span>
+<span id="cb3-4"><a href></a>  population,</span>
+<span id="cb3-5"><a href></a>  year_first,</span>
+<span id="cb3-6"><a href></a>  year_last,</span>
+<span id="cb3-7"><a href></a>  <span class="co"># Main options</span></span>
+<span id="cb3-8"><a href></a>  <span class="at">subregional =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-9"><a href></a>  <span class="at">binational =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-10"><a href></a>  <span class="at">scenarios =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-11"><a href></a>  <span class="co"># Further defaults</span></span>
+<span id="cb3-12"><a href></a>  <span class="at">age_groups =</span> <span class="dv">101</span>,</span>
+<span id="cb3-13"><a href></a>  <span class="at">fert_first =</span> <span class="dv">15</span>,</span>
+<span id="cb3-14"><a href></a>  <span class="at">fert_last =</span> <span class="dv">49</span>,</span>
+<span id="cb3-15"><a href></a>  <span class="at">share_born_female =</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">205</span>,</span>
+<span id="cb3-16"><a href></a>  <span class="at">spatial_unit =</span> <span class="st">&quot;Aargau&quot;</span></span>
 <span id="cb3-17"><a href></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="font-size: 70%;">
@@ -2806,7 +2802,7 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 <span id="cb10-13"><a href></a>Subregional migration<span class="sc">:</span> <span class="st">&quot;no&quot;</span></span>
 <span id="cb10-14"><a href></a>────────────────────────────────────────────────────────────────────────────────</span>
 <span id="cb10-15"><a href></a>Projected population size by <span class="dv">2030</span><span class="sc">:</span></span>
-<span id="cb10-16"><a href></a><span class="sc">-</span> Scenario <span class="st">&quot;high&quot;</span><span class="sc">:</span> <span class="dv">796100</span></span>
+<span id="cb10-16"><a href></a>  <span class="sc">-</span> Scenario <span class="st">&quot;high&quot;</span><span class="sc">:</span> <span class="dv">796100</span></span>
 <span id="cb10-17"><a href></a><span class="sc">-</span> Scenario <span class="st">&quot;low&quot;</span><span class="sc">:</span> <span class="dv">767104</span></span>
 <span id="cb10-18"><a href></a><span class="sc">-</span> Scenario <span class="st">&quot;reference&quot;</span><span class="sc">:</span> <span class="dv">781837</span></span>
 <span id="cb10-19"><a href></a>════════════════════════════════════════════════════════════════════════════════</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2853,17 +2849,13 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 <section id="subregions-regionalization-of-components" class="slide level2">
 <h2>Subregions: Regionalization of components</h2>
 <ul>
-<li>Number-of-people parameters
-<ul>
+<li>Number-of-people parameters</li>
 <li>Share of total population</li>
 <li>Replicate past patterns</li>
-</ul></li>
-<li>Rate-parameters
-<ul>
+<li>Rate-parameters</li>
 <li>Use cantonal parameters</li>
-<li><code>{propop_birth}</code> for births</li>
+<li><code>{propopbirth}</code> for births</li>
 <li><code>propop::calculate_shares()</code></li>
-</ul></li>
 </ul>
 </section>
 <section id="subregions-migration-between-subregions" class="slide level2">
@@ -2887,8 +2879,8 @@ Which scenarios are included in the parameters? Try running <code>propop::propop
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-45fe67b21898074d4e34" style="width:800px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-45fe67b21898074d4e34">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-656dab6486412a170c1b" style="width:800px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-656dab6486412a170c1b">{"x":{"diagram":"digraph {\ngraph [layout = dot, rankdir = LR]\nnode [shape = rectangle, style = \"filled,rounded\", fillcolor = deepskyblue, fontname = Helvetica]\ndata1 [label = \"Aggregated\npast migration\", shape = folder, fillcolor = gold]\ncalc_emi [label =  \"calculate\n_rates\"]\ndata2 [label = \"emi_rate\n= emigration\nrate\n per group\", shape = folder, fillcolor = gold]\ncalc_hist [label =  \"calculate\n_shares\"]\ndata3 [label = \"imm_share\n= immigration\n share\nper group\", shape = folder, fillcolor = gold]\npropop [label =  \"propop\"]\nresult [label= \"Population\nprojection\nresult\", shape = folder, fillcolor = gold]\n{data1}  -> calc_emi -> data2 -> propop\n{data1}  ->calc_hist -> data3 -> propop -> result\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ul>
@@ -2945,12 +2937,10 @@ Mean emigration rate per group and subregion from past migration (<code>emi_rate
 <ul>
 <li><code>scenarios</code> (e.g. reference, high, low)</li>
 <li><code>binational</code>: with or without nationality distinction</li>
-<li><code>subregional</code>:
-<ul>
+<li><code>subregional</code>:</li>
 <li><code>FALSE</code>: single region (default)</li>
 <li><code>&quot;rate&quot;</code>: needs <code>emi_sub</code>, <code>imm_sub</code></li>
 <li><code>&quot;net&quot;</code>: needs <code>mig_sub</code>; can produce negative numbers in small groups</li>
-</ul></li>
 </ul>
 </div>
 </div><div class="column" style="font-size: 65%;">
