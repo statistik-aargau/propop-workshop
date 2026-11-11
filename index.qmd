@@ -68,7 +68,7 @@ Participants ...
 \
 **Theory:** regionalization and subregions\
 **Exercise 2:** run your own population projection *or*\
-  explore regionalization and subregions further\
+explore regionalization and subregions further\
 **Wrap-up**\
 \
 *Lunch*\
@@ -155,8 +155,8 @@ $$
 -   **Rates** determine how many people reach the next age ($i$) cohort per year ($n$).
 -   Emigrants are exposed to half a year of mortality: factor $(1 - q/2)$.
 -   *emigration rates:\
-    -   $e$ = international emigration\
-    -   $\varepsilon$ = intercantonal emigration
+-   $e$ = international emigration\
+-   $\varepsilon$ = intercantonal emigration
 
 :::
 
@@ -176,9 +176,9 @@ $$
 -   **Births** are not shown in this equation (see [`calculate_newborns()`](https://github.com/statistik-aargau/propop/blob/main/R/calculate_newborns.R))).
 -   Immigrants are exposed to half a year of mortality: factor $(1 - q/2)$.
 -   *immigration numbers:\
-    -   $I^E$ = international immigration\
-    -   $I^I$ = intercantonal immigration
-    
+-   $I^E$ = international immigration\
+-   $I^I$ = intercantonal immigration
+
 :::
 
 ::: {.absolute bottom="20px" left="0px" style="font-size: 18px;"}
@@ -208,11 +208,11 @@ Office fédéral de la statistique (2020). [*Méthodes pour les scénarios canto
 ```{css}
 #| echo: false
 .reveal .grViz {
-  overflow: hidden !important;
+overflow: hidden !important;
 }
 .reveal .grViz svg {
-  width: 100% !important;
-  height: 100% !important;
+width: 100% !important;
+height: 100% !important;
 }
 ```
 
@@ -285,20 +285,20 @@ graph
 #| eval: false
 propop <- function(
     # Mandatory
-    parameters,
-    population,
-    year_first,
-    year_last,
-    # Main options
-    subregional = FALSE,
-    binational = TRUE,
-    scenarios = NULL,
-    # Further defaults
-    age_groups = 101,
-    fert_first = 15,
-    fert_last = 49,
-    share_born_female = 100 / 205,
-    spatial_unit = "Aargau"
+  parameters,
+  population,
+  year_first,
+  year_last,
+  # Main options
+  subregional = FALSE,
+  binational = TRUE,
+  scenarios = NULL,
+  # Further defaults
+  age_groups = 101,
+  fert_first = 15,
+  fert_last = 49,
+  share_born_female = 100 / 205,
+  spatial_unit = "Aargau"
 )
 ```
 :::
@@ -411,7 +411,7 @@ Nationality-specific projection: "yes"
 Subregional migration: "no"
 ────────────────────────────────────────────────────────────────────────────────
 Projected population size by 2030:
-- Scenario "high": 796100
+  - Scenario "high": 796100
 - Scenario "low": 767104
 - Scenario "reference": 781837
 ════════════════════════════════════════════════════════════════════════════════
@@ -437,20 +437,20 @@ You also need a **method to account for migration between subregions**.
 ## Subregions: Regionalization of components
 
 - Number-of-people parameters
-  - Share of total population
-  - Replicate past patterns
+- Share of total population
+- Replicate past patterns
 - Rate-parameters
-  - Use cantonal parameters 
-  - `{propopbirth}` for births
-  - `propop::calculate_shares()`
+- Use cantonal parameters 
+- `{propopbirth}` for births
+- `propop::calculate_shares()`
 
 ## Subregions: Migration between subregions
 
 ::: {style="font-size: 95%;"}
 `propop()` can account for migration **between** subregions using:
 
-   -   **rates** for emi- and immigration (`subregional = "rate"`).
-   -   **net numbers** for migration (`subregional = "net"`).
+-   **rates** for emi- and immigration (`subregional = "rate"`).
+-   **net numbers** for migration (`subregional = "net"`).
 \
 \
 
@@ -547,10 +547,10 @@ Mean emigration rate per group and subregion from past migration (`emi_rate`)
 -   `scenarios` (e.g. reference, high, low)
 -   `binational`: with or without nationality distinction
 -   `subregional`:
-    -   `FALSE`: single region (default)
-    -   `"rate"`: needs `emi_sub`, `imm_sub`
-    -   `"net"`: needs `mig_sub`; can produce negative numbers in small groups
-    
+-   `FALSE`: single region (default)
+-   `"rate"`: needs `emi_sub`, `imm_sub`
+-   `"net"`: needs `mig_sub`; can produce negative numbers in small groups
+
 :::
 :::
 
